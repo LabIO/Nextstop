@@ -1,0 +1,936 @@
+#N canvas 150 115 716 366 8;
+#X obj 460 34 tgl 50 0 sensON sensON-r sensON 5 7 0 10 -159808 -262144
+-204786 0 1;
+#X obj 29 41 cnv 15 120 200 empty empty empty 20 12 0 14 -204786 -66577
+0;
+#N canvas 0 119 997 708 2shell 0;
+#X obj 249 387 cnv 15 100 60 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj 271 405 shell;
+#X msg 215 238 killall omxplayer.bin;
+#X obj 145 417 r play_vid;
+#X obj 179 118 sel 1 0;
+#X obj 169 510 spigot;
+#X obj 225 511 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 803 310 sudo killall python;
+#X msg 149 607 1;
+#X obj 842 90 sel 1 0;
+#X obj 843 38 r sensON;
+#X obj 536 101 t b b b;
+#X obj 469 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 813 114 t b b;
+#X obj 718 137 delay 100;
+#X obj 555 138 delay 300;
+#X obj 479 146 delay 500;
+#X obj 255 512 r rec_end_vid0;
+#X obj 177 93 r vid2ON;
+#X obj 303 440 t f f;
+#X obj 147 638 s rec_sens0;
+#X text 106 672 quando acaba video \; volta a ligar sensor0;
+#X obj 423 512 spigot;
+#X obj 479 513 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 425 538 t f b;
+#X msg 451 565 1;
+#X obj 509 514 r rec_end_vid1;
+#X obj 449 595 s rec_sens0;
+#X obj 534 31 r restart_sens;
+#X obj 306 132 r mata_video;
+#X obj 171 536 t f b b;
+#X msg 618 381 python dist2_nextstop.py &;
+#X text 583 359 start receiving signal from 2 distance sensors;
+#X obj 309 655 s teaserON;
+#X msg 312 621 1;
+#X text 195 475 deixa passar o 0 do fim do video;
+#X msg 628 304 python clean_gpio3.py;
+#X msg 34 337 omxplayer --no-osd --layer 0 --win '10 20 400 200' -o
+local lxpoeta_teaser.mp4;
+#X obj 287 595 delay 20;
+#X obj 494 403 shell;
+#X obj 499 438 print python;
+#X msg 449 248 python dist1_nextstop5.py &;
+#X connect 1 1 19 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 1 2 0;
+#X connect 5 0 30 0;
+#X connect 6 0 5 1;
+#X connect 7 0 39 0;
+#X connect 8 0 20 0;
+#X connect 9 0 13 0;
+#X connect 9 1 7 0;
+#X connect 10 0 9 0;
+#X connect 11 0 16 0;
+#X connect 11 1 15 0;
+#X connect 11 2 7 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 13 1 36 0;
+#X connect 14 0 41 0;
+#X connect 15 0 36 0;
+#X connect 16 0 41 0;
+#X connect 17 0 6 0;
+#X connect 18 0 4 0;
+#X connect 19 0 5 0;
+#X connect 19 1 22 0;
+#X connect 22 0 24 0;
+#X connect 23 0 22 1;
+#X connect 24 0 23 0;
+#X connect 24 1 25 0;
+#X connect 25 0 27 0;
+#X connect 26 0 23 0;
+#X connect 28 0 11 0;
+#X connect 29 0 2 0;
+#X connect 30 0 6 0;
+#X connect 30 1 8 0;
+#X connect 30 2 38 0;
+#X connect 34 0 33 0;
+#X connect 36 0 39 0;
+#X connect 37 0 1 0;
+#X connect 38 0 34 0;
+#X connect 39 0 40 0;
+#X connect 39 1 40 0;
+#X connect 41 0 39 0;
+#X restore 40 136 pd 2shell;
+#N canvas 2 387 1009 285 videos 0;
+#X obj 42 8 r sel_vid0;
+#X obj 333 17 r sel_vid1;
+#X obj 58 70 spigot;
+#X obj 331 82 spigot;
+#X obj 235 15 inlet vid0;
+#X obj 231 45 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 502 52 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 506 22 inlet vid01;
+#X obj 690 -1 inlet;
+#X obj 690 21 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 333 110 t b b;
+#X obj 402 141 s mata_video;
+#X obj 53 96 t b b;
+#X obj 124 132 s mata_video;
+#X obj 691 41 t b b;
+#X obj 764 92 s mata_video;
+#X obj 578 106 delay 20;
+#X obj 577 171 s play_vid;
+#X obj 300 88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 682 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 681 84 sel 0 1;
+#X obj 719 182 delay 20;
+#X obj 723 247 s play_vid;
+#N canvas 0 53 1366 715 rapidos 0;
+#X obj 47 20 inlet;
+#X obj -294 205 s play_vid;
+#X obj 44 60 delay 20;
+#X obj -289 266 s play_vid;
+#X obj -286 335 s play_vid;
+#X obj -280 396 s play_vid;
+#X obj -270 461 s play_vid;
+#X obj -265 522 s play_vid;
+#X obj -262 591 s play_vid;
+#X obj -256 652 s play_vid;
+#X obj -247 718 s play_vid;
+#X obj -242 781 s play_vid;
+#X obj -4 215 s play_vid;
+#X obj 1 276 s play_vid;
+#X obj 4 345 s play_vid;
+#X obj 10 406 s play_vid;
+#X obj 20 471 s play_vid;
+#X obj 25 532 s play_vid;
+#X obj 28 601 s play_vid;
+#X obj 34 662 s play_vid;
+#X obj 43 728 s play_vid;
+#X obj 286 215 s play_vid;
+#X obj 291 276 s play_vid;
+#X obj 294 345 s play_vid;
+#X obj 300 406 s play_vid;
+#X obj 310 471 s play_vid;
+#X obj 315 532 s play_vid;
+#X obj 318 601 s play_vid;
+#X obj 324 662 s play_vid;
+#X obj 333 728 s play_vid;
+#X obj 576 225 s play_vid;
+#X obj 581 286 s play_vid;
+#X obj 584 355 s play_vid;
+#X obj 590 416 s play_vid;
+#X obj 600 481 s play_vid;
+#X obj 605 542 s play_vid;
+#X obj 608 611 s play_vid;
+#X obj 614 672 s play_vid;
+#X obj 623 738 s play_vid;
+#X obj 866 225 s play_vid;
+#X obj 871 286 s play_vid;
+#X obj 874 355 s play_vid;
+#X obj 880 416 s play_vid;
+#X obj 890 481 s play_vid;
+#X obj 895 542 s play_vid;
+#X obj 898 611 s play_vid;
+#X obj 899 672 s play_vid;
+#X obj 1156 235 s play_vid;
+#X obj 1161 296 s play_vid;
+#X obj 1164 365 s play_vid;
+#X obj 1170 426 s play_vid;
+#X obj 1180 491 s play_vid;
+#X obj 1185 552 s play_vid;
+#X obj 1188 621 s play_vid;
+#X obj 1194 682 s play_vid;
+#X obj 917 785 s play_vid;
+#X obj 1204 789 s play_vid;
+#X obj 1297 830 s play_vid;
+#X obj 629 800 s play_vid;
+#X obj 46 793 s play_vid;
+#X obj 339 790 s play_vid;
+#X obj 913 733 s play_vid;
+#X obj 1206 737 s play_vid;
+#X obj 48 90 random 61;
+#X obj -129 125 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41
+42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60, f 181;
+#X msg 499 29 -b --no-osd --layer 2 --win '165 90 849 475';
+#X msg -294 165 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/1.mp4;
+#X msg -289 226 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/2.mp4;
+#X msg -286 295 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/3.mp4;
+#X msg -280 356 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/4.mp4;
+#X msg -270 421 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/5.mp4;
+#X msg -265 482 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/6.mp4;
+#X msg -262 551 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/7.mp4;
+#X msg -257 611 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/8.mp4;
+#X msg -249 677 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/9.mp4;
+#X msg -241 739 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/10.mp4;
+#X msg -5 175 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/11.mp4;
+#X msg 1 236 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/12.mp4;
+#X msg 4 305 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/13.mp4;
+#X msg 10 366 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/14.mp4;
+#X msg 20 431 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/15.mp4;
+#X msg 25 492 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/16.mp4;
+#X msg 28 561 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/17.mp4;
+#X msg 34 622 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/18.mp4;
+#X msg 42 688 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/19.mp4;
+#X msg 45 753 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/20.mp4;
+#X msg 286 175 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/21.mp4;
+#X msg 291 236 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/22.mp4;
+#X msg 294 305 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/23.mp4;
+#X msg 301 366 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/24.mp4;
+#X msg 310 431 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/25.mp4;
+#X msg 315 492 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/26.mp4;
+#X msg 318 561 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/27.mp4;
+#X msg 324 622 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/28.mp4;
+#X msg 333 689 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/29.mp4;
+#X msg 338 749 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/30.mp4;
+#X msg 576 185 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/31.mp4;
+#X msg 581 246 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/32.mp4;
+#X msg 584 315 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/33.mp4;
+#X msg 590 376 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/34.mp4;
+#X msg 601 441 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/35.mp4;
+#X msg 605 502 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/36.mp4;
+#X msg 608 571 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/37.mp4;
+#X msg 614 632 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/38.mp4;
+#X msg 623 698 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/39.mp4;
+#X msg 630 760 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/40.mp4;
+#X msg 866 185 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/41.mp4;
+#X msg 871 246 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/42.mp4;
+#X msg 874 315 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/43.mp4;
+#X msg 880 376 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/44.mp4;
+#X msg 889 441 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/45.mp4;
+#X msg 895 502 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/46.mp4;
+#X msg 898 571 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/47.mp4;
+#X msg 904 632 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/48.mp4;
+#X msg 911 697 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/49.mp4;
+#X msg 917 751 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/50.mp4;
+#X msg 1156 195 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/51.mp4;
+#X msg 1161 256 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/52.mp4;
+#X msg 1164 325 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/53.mp4;
+#X msg 1170 386 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/54.mp4;
+#X msg 1180 451 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/55.mp4;
+#X msg 1185 512 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/56.mp4;
+#X msg 1188 581 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/57.mp4;
+#X msg 1194 642 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/58.mp4;
+#X msg 1203 708 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/59.mp4;
+#X msg 1204 755 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/60.mp4;
+#X msg 1296 797 omxplayer -b --layer 1 -o local --win '165 90 849 475'
+/home/pi/videos_nextstop/rapidos/61.mp4;
+#X connect 0 0 2 0;
+#X connect 2 0 63 0;
+#X connect 63 0 64 0;
+#X connect 64 0 66 0;
+#X connect 64 1 67 0;
+#X connect 64 2 68 0;
+#X connect 64 3 69 0;
+#X connect 64 4 70 0;
+#X connect 64 5 71 0;
+#X connect 64 6 72 0;
+#X connect 64 7 73 0;
+#X connect 64 8 74 0;
+#X connect 64 9 75 0;
+#X connect 64 10 76 0;
+#X connect 64 11 77 0;
+#X connect 64 12 78 0;
+#X connect 64 13 79 0;
+#X connect 64 14 80 0;
+#X connect 64 15 81 0;
+#X connect 64 16 82 0;
+#X connect 64 17 83 0;
+#X connect 64 18 84 0;
+#X connect 64 19 86 0;
+#X connect 64 20 87 0;
+#X connect 64 21 88 0;
+#X connect 64 22 89 0;
+#X connect 64 23 90 0;
+#X connect 64 24 91 0;
+#X connect 64 25 92 0;
+#X connect 64 26 93 0;
+#X connect 64 27 94 0;
+#X connect 64 28 96 0;
+#X connect 64 29 97 0;
+#X connect 64 30 98 0;
+#X connect 64 31 99 0;
+#X connect 64 32 100 0;
+#X connect 64 33 101 0;
+#X connect 64 34 102 0;
+#X connect 64 35 103 0;
+#X connect 64 36 104 0;
+#X connect 64 37 106 0;
+#X connect 64 38 107 0;
+#X connect 64 39 108 0;
+#X connect 64 40 109 0;
+#X connect 64 41 110 0;
+#X connect 64 42 111 0;
+#X connect 64 43 112 0;
+#X connect 64 44 113 0;
+#X connect 64 45 114 0;
+#X connect 64 46 116 0;
+#X connect 64 47 117 0;
+#X connect 64 48 118 0;
+#X connect 64 49 119 0;
+#X connect 64 50 120 0;
+#X connect 64 51 121 0;
+#X connect 64 52 122 0;
+#X connect 64 53 123 0;
+#X connect 64 54 124 0;
+#X connect 64 55 115 0;
+#X connect 64 56 125 0;
+#X connect 64 57 126 0;
+#X connect 64 58 105 0;
+#X connect 64 59 85 0;
+#X connect 64 60 95 0;
+#X connect 66 0 1 0;
+#X connect 67 0 3 0;
+#X connect 68 0 4 0;
+#X connect 69 0 5 0;
+#X connect 70 0 6 0;
+#X connect 71 0 7 0;
+#X connect 72 0 8 0;
+#X connect 73 0 9 0;
+#X connect 74 0 10 0;
+#X connect 75 0 11 0;
+#X connect 76 0 12 0;
+#X connect 77 0 13 0;
+#X connect 78 0 14 0;
+#X connect 79 0 15 0;
+#X connect 80 0 16 0;
+#X connect 81 0 17 0;
+#X connect 82 0 18 0;
+#X connect 83 0 19 0;
+#X connect 84 0 20 0;
+#X connect 85 0 59 0;
+#X connect 86 0 21 0;
+#X connect 87 0 22 0;
+#X connect 88 0 23 0;
+#X connect 89 0 24 0;
+#X connect 90 0 25 0;
+#X connect 91 0 26 0;
+#X connect 92 0 27 0;
+#X connect 93 0 28 0;
+#X connect 94 0 29 0;
+#X connect 95 0 60 0;
+#X connect 96 0 30 0;
+#X connect 97 0 31 0;
+#X connect 98 0 32 0;
+#X connect 99 0 33 0;
+#X connect 100 0 34 0;
+#X connect 101 0 35 0;
+#X connect 102 0 36 0;
+#X connect 103 0 37 0;
+#X connect 104 0 38 0;
+#X connect 105 0 58 0;
+#X connect 106 0 39 0;
+#X connect 107 0 40 0;
+#X connect 108 0 41 0;
+#X connect 109 0 42 0;
+#X connect 110 0 43 0;
+#X connect 111 0 44 0;
+#X connect 112 0 45 0;
+#X connect 113 0 46 0;
+#X connect 114 0 61 0;
+#X connect 115 0 55 0;
+#X connect 116 0 47 0;
+#X connect 117 0 48 0;
+#X connect 118 0 49 0;
+#X connect 119 0 50 0;
+#X connect 120 0 51 0;
+#X connect 121 0 52 0;
+#X connect 122 0 53 0;
+#X connect 123 0 54 0;
+#X connect 124 0 62 0;
+#X connect 125 0 56 0;
+#X connect 126 0 57 0;
+#X restore 37 148 pd rapidos;
+#N canvas 40 59 817 486 longos 0;
+#X obj 482 -16 inlet;
+#X obj 17 169 s play_vid;
+#X obj 478 10 delay 20;
+#X floatatom 573 52 5 0 0 0 - - -, f 5;
+#X obj 48 224 s play_vid;
+#X obj 60 290 s play_vid;
+#X obj 89 342 s play_vid;
+#X obj 119 404 s play_vid;
+#X obj 149 463 s play_vid;
+#X obj 170 514 s play_vid;
+#X obj 210 571 s play_vid;
+#X msg 18 141 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/diala.mp4, f 98;
+#X msg 47 200 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/diana.mp4, f 101;
+#X msg 61 262 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/gautam.mp4, f 99;
+#X msg 90 321 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/lxpoetas.mp4, f 108;
+#X msg 119 383 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/mick.mp4, f 100;
+#X msg 148 443 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/mnijas.mp4, f 102;
+#X msg 171 486 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/moin.mp4, f 97;
+#X msg 213 544 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/sofia.mp4, f 102;
+#X obj 474 34 random 17;
+#X obj 479 75 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 555 151 s play_vid;
+#X obj 565 186 s play_vid;
+#X obj 579 221 s play_vid;
+#X obj 589 256 s play_vid;
+#X obj 630 292 s play_vid;
+#X obj 640 327 s play_vid;
+#X obj 654 362 s play_vid;
+#X obj 664 397 s play_vid;
+#X obj 686 436 s play_vid;
+#X msg 555 135 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/a.mp4, f 98;
+#X msg 565 170 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/b.mp4, f 98;
+#X msg 579 205 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/c.mp4, f 98;
+#X msg 589 240 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/d.mp4, f 98;
+#X msg 630 275 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/emarinho4.mp4, f 103;
+#X msg 640 311 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/f3mts.mp4, f 98;
+#X msg 654 346 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/g7.mp4, f 98;
+#X msg 664 381 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/h15.mp4, f 98;
+#X msg 686 420 omxplayer -b --no-osd --layer 2 --win '165 90 849 475'
+-o local ~/videos_nextstop/longos/i.mp4, f 98;
+#X connect 0 0 2 0;
+#X connect 2 0 19 0;
+#X connect 11 0 1 0;
+#X connect 12 0 4 0;
+#X connect 13 0 5 0;
+#X connect 14 0 6 0;
+#X connect 15 0 7 0;
+#X connect 16 0 8 0;
+#X connect 17 0 9 0;
+#X connect 18 0 10 0;
+#X connect 19 0 3 0;
+#X connect 19 0 20 0;
+#X connect 20 0 11 0;
+#X connect 20 1 12 0;
+#X connect 20 2 13 0;
+#X connect 20 3 14 0;
+#X connect 20 4 15 0;
+#X connect 20 5 16 0;
+#X connect 20 6 17 0;
+#X connect 20 7 18 0;
+#X connect 20 8 30 0;
+#X connect 20 9 31 0;
+#X connect 20 10 32 0;
+#X connect 20 11 33 0;
+#X connect 20 12 34 0;
+#X connect 20 13 35 0;
+#X connect 20 14 36 0;
+#X connect 20 15 37 0;
+#X connect 20 16 38 0;
+#X connect 30 0 21 0;
+#X connect 31 0 22 0;
+#X connect 32 0 23 0;
+#X connect 33 0 24 0;
+#X connect 34 0 25 0;
+#X connect 35 0 26 0;
+#X connect 36 0 27 0;
+#X connect 37 0 28 0;
+#X connect 38 0 29 0;
+#X restore 295 146 pd longos;
+#X msg 781 32 -b --no-osd --layer 2 --win '165 90 849 475';
+#X msg 576 134 omxplayer --no-osd --layer 0 -o local -b --win '165
+90 849 475' ~/videos_nextstop/lxpoeta_teaser.mp4, f 61;
+#X msg 722 210 omxplayer --no-osd --layer 0 -o local -b --win '165
+90 849 475' ~/videos_nextstop/lxpoeta_teaser_Marinho.mp4, f 61;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 12 0;
+#X connect 3 0 10 0;
+#X connect 3 0 18 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 1;
+#X connect 6 0 3 1;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 14 0;
+#X connect 10 0 24 0;
+#X connect 10 1 11 0;
+#X connect 12 0 23 0;
+#X connect 12 1 13 0;
+#X connect 14 0 19 0;
+#X connect 14 1 15 0;
+#X connect 16 0 26 0;
+#X connect 19 0 20 0;
+#X connect 20 0 16 0;
+#X connect 20 1 21 0;
+#X connect 21 0 27 0;
+#X connect 26 0 17 0;
+#X connect 27 0 22 0;
+#X restore 190 95 pd videos;
+#N canvas 563 257 340 384 osc 0;
+#X obj 61 167 oscparse;
+#X msg 39 63 listen 5000;
+#X obj 61 136 netreceive -u -b 5000;
+#X msg 60 98 listen 0;
+#X obj 47 195 list trim;
+#X text 126 99 stop listening;
+#N canvas 2 107 450 300 sendOSC2python 0;
+#X msg 65 44 disconnect;
+#X msg 41 18 connect localhost 9000;
+#X floatatom 36 271 5 0 0 0 - - -, f 5;
+#X obj 115 258 print oscSend;
+#X msg 96 90 set numero;
+#X obj 87 172 list prepend send;
+#X obj 111 198 list trim;
+#X obj 101 139 oscformat;
+#X floatatom 212 111 0 0 0 0 - - -;
+#X obj 38 229 netsend -u -b;
+#X obj 254 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 311 164 0;
+#X text 316 7 tried to use this value to make restart in the python
+script \, without success. I cannot extract the value of the message
+to use it as a variable in the script (then it would be straigth forward:
+if var == 0: GPIO.cleanup() and restart...;
+#X obj 242 83 r restart_sens_OSC;
+#X connect 0 0 9 0;
+#X connect 1 0 9 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 9 0;
+#X connect 7 0 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 2 0;
+#X connect 9 1 3 0;
+#X connect 10 0 1 0;
+#X connect 10 0 4 0;
+#X connect 11 0 8 0;
+#X restore 187 34 pd sendOSC2python;
+#X text 205 13 not used;
+#X obj 37 294 s move;
+#X obj 111 260 change;
+#X obj 112 309 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 113 284 sel 1;
+#X obj 109 334 s butt;
+#X obj 51 223 route move butt time;
+#X obj 202 269 print;
+#X floatatom 243 214 5 0 0 0 - - -, f 5;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 13 0;
+#X connect 9 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 8 0;
+#X connect 13 1 9 0;
+#X restore 41 78 pd osc;
+#X obj 527 39 bng 30 250 50 0 empty empty empty 17 7 0 10 -257985 -1
+-1;
+#N canvas 110 419 609 230 INIT 0;
+#X obj 37 31 loadbang;
+#X obj 205 76 delay 1000;
+#X obj 347 54 sel 1 0;
+#X msg 326 103 \; rec_sens0 1 \; rec_sens1 1 \; liga_arduino bang \;
+teaserON 1 \;;
+#X msg 482 102 \; rec_sens0 0 \; rec_sens1 0 \; teaserON 0 \; mata_video
+bang \;;
+#X msg 207 104 \; sensON-r 1 \;;
+#X msg 39 83 \; rec_sens0 1 \; rec_sens1 1 \; liga_arduino bang \;
+teaserON 1 \; vid0rr 1 \; vid1rr 1 \;;
+#X obj 405 18 r butt;
+#X obj 345 18 inlet;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 2 0;
+#X restore 42 47 pd INIT;
+#N canvas 556 302 437 323 rec_arduino 0;
+#X obj 87 199 serial_print;
+#X msg 95 113 close;
+#X msg 24 101 devices;
+#X floatatom 144 94 5 0 0 0 - - -, f 5;
+#X msg 144 113 open \$1;
+#X obj 84 156 comport 1 9600;
+#X msg 236 113 open 0;
+#X obj 93 249 s dist1_;
+#X obj 274 187 print;
+#X obj 236 86 r liga_arduino;
+#X msg 247 135 open 1;
+#X obj 152 43 sel 0 1;
+#X text 13 281 arduino /home/pi/sketchbook/dist_sensor/dist_sensor.ino
+;
+#X obj 161 16 r sensON;
+#X text 251 21 sensON reativa o python \, melhor deixar estar arduino
+;
+#X connect 0 0 7 0;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X connect 6 0 5 0;
+#X connect 9 0 6 0;
+#X connect 10 0 5 0;
+#X connect 11 0 1 0;
+#X connect 11 1 6 0;
+#X restore 39 108 pd rec_arduino;
+#X obj 573 38 s restart_sens;
+#X obj 569 81 s mata_video;
+#X obj 528 77 bng 30 250 50 0 empty empty empty 17 7 0 10 -261682 -1
+-1;
+#X obj 178 31 tgl 50 1 empty vid0rr vid0 5 7 0 10 -4160 -262144 -204786
+1 1;
+#X obj 245 32 tgl 50 1 empty vid1rr vid1 5 7 0 10 -260097 -262144 -204786
+1 1;
+#X obj 302 30 bng 50 250 50 0 empty empty teaser 17 7 0 10 -204786
+-1 -1;
+#X obj 358 30 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 574 126 s dispara_ovelha;
+#X obj 530 116 tgl 30 0 empty empty empty 17 7 0 10 -191407 -1 -1 0
+1;
+#X obj 444 175 cnv 15 200 180 empty empty empty 20 12 0 14 -232576
+-66577 0;
+#X obj 483 260 nbx 5 30 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
+-262144 -1 -1 1 256;
+#N canvas 156 109 358 598 sensor1 0;
+#X obj 127 134 spigot;
+#X obj 252 78 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 124 213 change;
+#N canvas 36 582 450 300 speedlim 0;
+#X obj 21 37 inlet;
+#X obj 24 260 outlet;
+#X obj 136 223 spigot;
+#X obj 253 117 metro;
+#X obj 325 49 inlet;
+#X obj 306 77 t b f;
+#X msg 269 80 1;
+#X obj 248 143 t b b;
+#X msg 302 199 1;
+#X msg 165 189 0;
+#X floatatom 133 109 5 0 0 0 - - -, f 5;
+#X floatatom 146 255 5 0 0 0 - - -, f 5;
+#X obj 350 118 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 178 167 delay 10;
+#X obj 246 244 print spidlim;
+#X floatatom 278 19 5 0 0 0 - - -, f 5;
+#X connect 0 0 10 0;
+#X connect 2 0 11 0;
+#X connect 2 0 1 0;
+#X connect 3 0 7 0;
+#X connect 4 0 5 0;
+#X connect 4 0 15 0;
+#X connect 5 0 6 0;
+#X connect 5 0 12 0;
+#X connect 5 1 3 1;
+#X connect 6 0 3 0;
+#X connect 7 0 13 0;
+#X connect 7 1 8 0;
+#X connect 8 0 2 1;
+#X connect 9 0 2 1;
+#X connect 10 0 2 0;
+#X connect 13 0 9 0;
+#X restore 265 138 pd speedlim;
+#X obj 125 248 sel 1 0;
+#X obj 193 213 tgl 30 0 empty empty det1 17 7 0 10 -204786 -1 -1 1
+1;
+#X obj 108 63 nbx 5 30 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
+-262144 -1 -1 1 256;
+#X text 16 12 perto - deteta presencia;
+#X obj 229 271 t b b;
+#X obj 120 32 inlet;
+#X obj 128 184 expr if ($f1 == 1 \, 1 \, 0) \;;
+#X obj 44 343 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 224 419 0;
+#X text 207 502 envia comando ao shell \; para correr video;
+#X msg 152 517 1;
+#X obj 228 446 s rec_sens0;
+#X obj 244 387 s mata_video;
+#X msg 239 348 0;
+#X obj 282 352 s teaserON;
+#X obj 78 335 t b b b b b b;
+#X obj 213 483 s sel_vid1;
+#X obj 174 549 s rec_end_vid1;
+#X obj 274 291 s mata_video;
+#X obj 283 320 s teaserON;
+#X msg 252 317 1;
+#X obj 251 24 inlet;
+#X text 252 419 stop rec sens0;
+#X obj 64 548 s rec_end_vid0;
+#X obj 188 475 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 186 295 delay 20;
+#X connect 0 0 10 0;
+#X connect 1 0 0 1;
+#X connect 2 0 4 0;
+#X connect 2 0 5 0;
+#X connect 4 0 19 0;
+#X connect 4 1 8 0;
+#X connect 6 0 0 0;
+#X connect 8 0 29 0;
+#X connect 8 1 22 0;
+#X connect 9 0 6 0;
+#X connect 10 0 2 0;
+#X connect 11 0 19 0;
+#X connect 12 0 15 0;
+#X connect 14 0 21 0;
+#X connect 14 0 27 0;
+#X connect 17 0 18 0;
+#X connect 19 1 14 0;
+#X connect 19 2 20 0;
+#X connect 19 3 12 0;
+#X connect 19 4 16 0;
+#X connect 19 5 17 0;
+#X connect 24 0 23 0;
+#X connect 25 0 1 0;
+#X connect 28 0 20 0;
+#X restore 466 307 pd sensor1;
+#X obj 457 217 r move;
+#X obj 558 225 r rec_sens1;
+#X obj 560 303 tgl 40 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
+1;
+#X text 493 192 sens 1;
+#N canvas 2 123 459 488 sons? 0;
+#X obj 77 455 dac~;
+#X obj 205 119 soundfiler;
+#X msg 206 91 read -resize ovelha.wav ovelha;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array ovelha 1.44868e+06 float 2;
+#X coords 0 1 1.44868e+06 -1 200 140 1;
+#X restore 216 157 graph;
+#X obj 55 148 tabplay~ ovelha;
+#X msg 41 91 bang;
+#X msg 92 91 stop;
+#X obj 53 208 s~ somOut;
+#X obj 77 352 r~ somOut;
+#X obj 82 396 *~;
+#X obj 136 409 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 69 20 r dispara_ovelha;
+#X obj 65 54 sel 1 0;
+#X connect 2 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 8 0 9 0;
+#X connect 9 0 0 0;
+#X connect 9 0 0 1;
+#X connect 10 0 9 1;
+#X connect 11 0 12 0;
+#X connect 12 0 5 0;
+#X connect 12 1 6 0;
+#X restore 39 157 pd sons?;
+#X obj 353 122 line;
+#X msg 361 93 0 \, 127 60000;
+#X obj 356 148 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 196 173 cnv 15 200 180 empty empty empty 20 12 0 14 -262130
+-66577 0;
+#N canvas 189 152 448 619 sensor0 0;
+#X obj 48 321 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 86 280 sel 1 0;
+#X obj 99 166 spigot;
+#X obj 259 148 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 181 405 0;
+#X obj 101 199 max 5;
+#X text 162 516 envia comando ao shell \; para correr video;
+#X msg 130 542 1;
+#X obj 93 255 change;
+#X obj 156 257 tgl 30 0 empty empty det0 17 7 0 10 -261682 -1 -1 0
+1;
+#X obj 129 563 s rec_end_vid0;
+#X obj 168 497 s sel_vid0;
+#X obj 185 432 s rec_sens0;
+#X obj 97 88 nbx 8 30 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
+-262144 -1 -1 232 256;
+#X text 126 52 longe - reativo;
+#X obj 222 363 s mata_video;
+#X msg 243 319 0;
+#X obj 286 323 s teaserON;
+#X obj 82 313 t b b b b b b;
+#X obj 71 45 inlet;
+#X obj 299 40 inlet;
+#X obj 178 466 delay 10;
+#X text 209 405 stop rec from sens0;
+#X obj 106 228 expr if ($f1 < 130 \, 1 \, 0) \;;
+#X floatatom 212 256 5 0 0 0 - - -, f 5;
+#X connect 0 0 18 0;
+#X connect 1 0 18 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 12 0;
+#X connect 5 0 23 0;
+#X connect 7 0 10 0;
+#X connect 8 0 1 0;
+#X connect 8 0 9 0;
+#X connect 16 0 17 0;
+#X connect 18 1 7 0;
+#X connect 18 2 21 0;
+#X connect 18 3 4 0;
+#X connect 18 4 15 0;
+#X connect 18 5 16 0;
+#X connect 19 0 13 0;
+#X connect 19 0 2 0;
+#X connect 20 0 3 0;
+#X connect 21 0 11 0;
+#X connect 23 0 8 0;
+#X connect 23 0 24 0;
+#X restore 219 296 pd sensor0;
+#X text 200 318 longe - reativo;
+#X obj 221 219 r dist1_;
+#X obj 230 251 nbx 8 30 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
+-262144 -1 -1 232 256;
+#X obj 308 221 r rec_sens0;
+#X obj 319 292 tgl 40 0 empty empty empty 17 7 0 10 -203904 -1 -1 0
+1;
+#X text 263 187 sens 0;
+#X msg 410 119 stop;
+#X obj 41 21 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#N canvas 189 351 446 372 notas 0;
+#X text 6 240 shell commands (to know which processes are running and
+control): pidof python | wc -w # gives the number of processes ps -aux
+| grep python # gives more detailed info how to kill selectively a
+video? if not possible on sens1 we need to kill omxplayer.bin and restart
+the default video immediately;
+#X text 5 125 O sens1 tem prioridade. Quando da 1 liga video longo
+e antes mata os videos que estiverem a tocar. OBS: o utilizador vai
+ter que se mexer de vez em quando se não quer que o video va abaixo
+\, ou entao quando basa não crasha este logo;
+#X text 0 18 O sensor ultrasons ligado ao arduino é sensivel. envia
+dist1_ o pir infra-red envia move (1 ou 0 depois de 4 sec de inatividade)
+vid0 e vid1 toggles param de enviar os bangs para correr videos rec_sens0
+e rec_sens1 param de receber sinais dos sensores;
+#X restore 42 185 pd notas;
+#X obj 362 56 metro 300000;
+#X obj 378 25 r teaserON;
+#X connect 5 0 8 0;
+#X connect 10 0 9 0;
+#X connect 11 0 3 0;
+#X connect 12 0 3 1;
+#X connect 13 0 3 2;
+#X connect 14 0 39 0;
+#X connect 16 0 15 0;
+#X connect 20 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 22 0 19 1;
+#X connect 25 0 27 0;
+#X connect 26 0 25 0;
+#X connect 31 0 32 0;
+#X connect 31 0 29 0;
+#X connect 33 0 34 0;
+#X connect 34 0 29 1;
+#X connect 36 0 25 0;
+#X connect 37 0 6 0;
+#X connect 39 0 13 0;
+#X connect 39 0 26 0;
